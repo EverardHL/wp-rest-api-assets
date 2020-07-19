@@ -230,7 +230,7 @@ function wraa_launch_admin(){
                     <div>
                         <p>Original</p>
                         <textarea name=\"comment\" form=\"usrform\" disabled id='originalTextarea' cols='60%' rows='30'></textarea>
-                        <p><a class='button button-primary' onclick=\"refresh();\">Refresh</a></p>
+                        <p><a class='button button-primary' onclick=\"refresh('original');\">Refresh</a></p>
                     </div>
                     <div>
                         <p>Custom</p>
@@ -273,7 +273,7 @@ function wraa_launch_admin(){
             function refresh(file) {
   
                 var xhr = new XMLHttpRequest();
-                xhr.open('GET', '/wp-content/plugins/wp-rest-api-assets/'+file+'.json');
+                xhr.open('GET', '".plugin_dir_url(__DIR__)."'+file+'.json');
                 xhr.addEventListener('readystatechange', function() {
                     if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
                         document.getElementById(file + 'Textarea').value = htmlEntities(xhr.responseText);
